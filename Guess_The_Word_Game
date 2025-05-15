@@ -1,0 +1,41 @@
+#Guess The Word Game
+import random
+name=input("Enter Your Name").upper()
+print(name +",Good Luck!")
+print("Guess Your Word")
+words=["artifical","learning","python","java","computer","cyptography","mathematics","science","datascience","algorithm"] 
+gen=random.choice(words)
+length=len(gen)
+print("Number of letters: ",length)
+guesses=''
+turns=10
+
+while turns > 0:
+    failed=0
+    for char in gen:
+        if char in guesses:
+            print(char,end="")
+        else:
+            print("_",end="")
+            failed=failed+1
+        
+    if failed==0:
+            print()
+            print("You won")
+            print("The word is: ",gen)
+            break
+    print()
+    guess=input("Guess a character:").lower() 
+     
+    guesses += guess
+
+    if guess not in gen:
+         
+         turns=turns-1
+         print("Wrong")
+         print("You have", + turns, 'more guesses')
+
+         if turns == 0:
+            print("You Loose,The word was",gen)
+    
+         
